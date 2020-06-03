@@ -4,16 +4,16 @@
 
 <script>
 export default {
-  name: 'App',
+  name: "App",
   computed: {
-    layout () {
-      return (this.$route.meta.layout || 'empty') + '-layout'
+    layout() {
+      return (this.$route.meta.layout || "empty") + "-layout";
     }
   }
-}
+};
 </script>
 
 <style lang="css">
-@import '~materialize-css/dist/css/materialize.min.css';
-@import 'assets/index.css';
+@import "~materialize-css/dist/css/materialize.min.css";
+@import "assets/index.css";
 </style>

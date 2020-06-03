@@ -10,7 +10,7 @@
 import keys from "@/components/helpers/keys";
 
 export default {
-  name: 'AuthLayout',
+  name: "AuthLayout",
   computed: {
     error() {
       return this.$store.getters.error;

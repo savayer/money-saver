@@ -74,6 +74,8 @@ export default {
       constrainWidth: false,
       alignment: "right"
     });
+
+    this.$store.dispatch("getUser");
   },
   beforeDestroy() {
     clearInterval(this.interval);

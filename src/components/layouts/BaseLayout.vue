@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  name: 'BaseLayout',
+  name: "BaseLayout",
   data() {
     return {
       isOpen: true
