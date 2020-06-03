@@ -1,4 +1,7 @@
-# money-saver
+# Money saver  
+
+Vue practive  
+Money accounting app on vue
 
 ## Project setup
 ```
