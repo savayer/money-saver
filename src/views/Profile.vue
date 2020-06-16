@@ -4,15 +4,20 @@
       <h3>Profile</h3>
     </div>
 
-    <form class="form">
+    <form class="form" @submit.prevent="submitProfile()">
       <div class="input-field">
-        <input id="username" type="text" class="validate" v-model="username" />
+        <input id="username" type="text" v-model="user" />
         <label for="username" class="active">Name</label>
-        <span class="helper-text invalid">name</span>
+        <span
+          class="helper-text invalid"
+          v-if="$v.user.$dirty && !$v.user.required"
+        >
+          Name is required
+        </span>
       </div>
 
       <button class="btn waves-effect waves-light" type="submit">
-        Обновить
+        Update
         <i class="material-icons right">send</i>
       </button>
     </form>
@@ -20,20 +25,41 @@
 </template>
 
 <script>
+import { required } from "vuelidate/lib/validators";
+
 export default {
-  name: "Profile",
-  data() {
-    return {
-      username: ""
-    };
-  },
-  computed: {
-    user() {
-      return this.$store.getters.user;
+  validations: {
+    user: {
+      required
     }
   },
-  created() {
-    this.username = this.user;
+  name: "Profile",
+  computed: {
+    user: {
+      get() {
+        return this.$store.getters.username;
+      },
+      set(val) {
+        this.$store.commit("setUsername", val);
+      }
+    }
+  },
+  methods: {
+    async submitProfile() {
+      this.$v.$touch();
+      console.log(this.$v);
+      if (this.$v.$invalid) {
+        console.log("invalid");
+        return;
+      }
+      try {
+        console.log("valid");
+        await this.$store.dispatch("setUser", this.user);
+        this.$notify("The data was updated");
+      } catch (e) {
+        /* */
+      }
+    }
   }
 };
 </script>

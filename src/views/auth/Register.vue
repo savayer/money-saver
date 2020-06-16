@@ -95,7 +95,6 @@
 </template>
 
 <script>
-import { validationMixin } from "vuelidate";
 import { email, required, minLength } from "vuelidate/lib/validators";
 
 export default {
@@ -107,7 +106,6 @@ export default {
       password: ""
     };
   },
-  mixins: [validationMixin],
   validations: {
     email: {
       email,

@@ -18,7 +18,7 @@ export default {
   },
   watch: {
     error(fbError) {
-      this.$notify(keys[fbError.code] || "Something went wrong");
+      this.$notify(keys[fbError.code] || "Something went wrong", "error");
     }
   }
 };

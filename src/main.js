@@ -4,6 +4,7 @@ import router from "./router";
 import store from "./store";
 import Notify from "./components/helpers/notify.plugin";
 import dateFilter from "@/components/filters/date.filter";
+import Vuelidate from "vuelidate";
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
@@ -12,6 +13,7 @@ Vue.config.productionTip = false;
 components.map(component => Vue.component(component.name, component));
 Vue.filter("format", dateFilter);
 Vue.use(Notify);
+Vue.use(Vuelidate);
 
 const firebaseConfig = {
   apiKey: "AIzaSyCKQyEeUU-ECO4481Ec5meyO65rzvRaS2w",

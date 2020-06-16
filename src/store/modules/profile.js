@@ -2,16 +2,16 @@ import firebase from "firebase/app";
 
 export default {
   state: {
-    user: null,
+    username: null,
     bill: null
   },
   getters: {
-    user: s => s.user,
+    username: s => s.username,
     bill: s => s.bill
   },
   mutations: {
-    setUser(state, user) {
-      state.user = user;
+    setUsername(state, username) {
+      state.username = username;
     },
     setBill(state, bill) {
       state.bill = bill;
@@ -19,13 +19,31 @@ export default {
   },
   actions: {
     async getUser({ commit }) {
+      try {
+        const uid = firebase.auth().currentUser.uid;
+        const snapshot = await firebase
+          .database()
+          .ref(`/users/${uid}/profile`)
+          .once("value");
+
+        const username = snapshot.val().username;
+        commit("setUsername", username);
+      } catch (error) {
+        commit("setError", error);
+        throw error;
+      }
+    },
+    async setUser({ commit }, username) {
       const uid = firebase.auth().currentUser.uid;
-      const snapshot = await firebase
+
+      await firebase
         .database()
         .ref(`/users/${uid}/profile`)
-        .once("value");
+        .set({
+          username
+        });
 
-      commit("setUser", snapshot.val().username);
+      commit("setUsername", username);
     }
   }
 };
