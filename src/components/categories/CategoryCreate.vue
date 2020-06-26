@@ -69,7 +69,7 @@ export default {
           limit: this.limit
         });
 
-        console.log(category);
+        this.$store.commit('pushCategories', category)
 
         this.limit = "";
         this.name = "";
