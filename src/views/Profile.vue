@@ -47,13 +47,10 @@ export default {
   methods: {
     async submitProfile() {
       this.$v.$touch();
-      console.log(this.$v);
       if (this.$v.$invalid) {
-        console.log("invalid");
         return;
       }
       try {
-        console.log("valid");
         await this.$store.dispatch("setUser", this.user);
         this.$notify("The data was updated");
       } catch (e) {

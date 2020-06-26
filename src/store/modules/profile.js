@@ -34,16 +34,20 @@ export default {
       }
     },
     async setUser({ commit }, username) {
-      const uid = firebase.auth().currentUser.uid;
+      try {
+        const uid = firebase.auth().currentUser.uid;
 
-      await firebase
-        .database()
-        .ref(`/users/${uid}/profile`)
-        .set({
-          username
-        });
+        await firebase
+          .database()
+          .ref(`/users/${uid}/profile`)
+          .child("username")
+          .set(username);
 
-      commit("setUsername", username);
+        commit("setUsername", username);
+      } catch (error) {
+        commit("setError", error);
+        throw error;
+      }
     }
   }
 };
