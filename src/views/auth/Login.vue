@@ -68,6 +68,10 @@
         </router-link>
       </p>
     </div>
+
+    <div class="progress progress-absolute" v-if="loader">
+      <div class="indeterminate"></div>
+    </div>
   </form>
 </template>
 
@@ -79,7 +83,8 @@ export default {
   data() {
     return {
       email: "",
-      password: ""
+      password: "",
+      loader: false
     };
   },
   validations: {
@@ -104,10 +109,12 @@ export default {
       };
 
       try {
+        this.loader = true
         await this.$store.dispatch("login", formData);
         this.$router.push("/");
+        this.loader = false
       } catch (e) {
-        /* */
+        this.loader = false
       }
     }
   }

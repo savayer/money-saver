@@ -1,3 +1,7 @@
+body {
+  overflow-x: hidden;
+}
+
 .auth-layout {
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -169,6 +173,36 @@
 .fade-enter, .fade-leave-to {
     opacity: 0;
 }
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: .3s;
+}
+.slide-enter {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+.slide-leave-to {
+  transform: translateX(100%);
+  opacity: 0;
+}
+.slide-enter-to, .slide-leave {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.scale-enter-active,
+.scale-leave-active {
+  transition: .3s;
+}
+.scale-enter, .scale-leave-to {
+  transform: scale(0);
+}
+.scale-enter-to, .scale-leave {
+  transform: scale(1);
+}
+
+
 .mb20 {
     margin-bottom: 20px !important;
 }
@@ -197,4 +231,10 @@
 
 .tabs .indicator {
   background-color:#26a69a;
+}
+
+.progress-absolute {
+  position: absolute;
+  margin: 0;
+  bottom: 0;
 }

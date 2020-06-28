@@ -1,6 +1,6 @@
 <template>
   <div class="white blue lighten-3 auth-layout">
-    <transition name="fade" mode="out-in">
+    <transition name="slide" mode="out-in">
       <router-view />
     </transition>
   </div>
