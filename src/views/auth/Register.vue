@@ -134,12 +134,12 @@ export default {
       };
 
       try {
-        this.loader = true
+        this.loader = true;
         await this.$store.dispatch("signIn", formData);
-        this.loader = false
+        this.loader = false;
         this.$router.push("/");
       } catch (e) {
-        this.loader = false
+        this.loader = false;
       }
     }
   }

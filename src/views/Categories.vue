@@ -6,7 +6,9 @@
     <section>
       <div class="row">
         <ul id="tabs" class="tabs">
-          <li class="tab col s6"><a class="active" href="#create">Create</a></li>
+          <li class="tab col s6">
+            <a class="active" href="#create">Create</a>
+          </li>
           <li class="tab col s6"><a href="#update">Update</a></li>
         </ul>
         <div id="create" class="s12">
@@ -23,7 +25,7 @@
 <script>
 import CategoryCreate from "@/components/categories/CategoryCreate";
 import CategoryUpdate from "@/components/categories/CategoryUpdate";
-import M from 'materialize-css'
+import M from "materialize-css";
 
 export default {
   name: "Categories",
@@ -31,8 +33,8 @@ export default {
     CategoryCreate,
     CategoryUpdate
   },
-  mounted () {
-    M.Tabs.init(document.getElementById('tabs'), {})
+  mounted() {
+    M.Tabs.init(document.getElementById("tabs"), {});
   }
 };
 </script>

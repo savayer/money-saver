@@ -8,10 +8,10 @@ export default {
     categories: state => state.categories
   },
   mutations: {
-    pushCategories (state, data) {
-      state.categories.push(data)
+    pushCategories(state, data) {
+      state.categories.push(data);
     },
-    clearCategories: state => state.categories = []
+    clearCategories: state => (state.categories = [])
   },
   actions: {
     async createCategory({ commit }, { name, limit }) {
@@ -30,28 +30,28 @@ export default {
       }
     },
 
-    async getCategories ({ commit }) {
+    async getCategories({ commit }) {
       try {
         const uid = firebase.auth().currentUser.uid;
 
-        commit('clearCategories')
+        commit("clearCategories");
         await firebase
           .database()
           .ref(`/users/${uid}/categories`)
-          .once('value', snap => {
+          .once("value", snap => {
             snap.forEach(item => {
-              const category = item.val()
-              category.id = item.key
-              commit('pushCategories', category)
-            })
-          })
+              const category = item.val();
+              category.id = item.key;
+              commit("pushCategories", category);
+            });
+          });
       } catch (error) {
         commit("setError", error);
         throw error;
       }
     },
 
-    async setCategory ({ commit }, { id, name, limit }) {
+    async setCategory({ commit }, { id, name, limit }) {
       try {
         const uid = firebase.auth().currentUser.uid;
 
@@ -59,8 +59,9 @@ export default {
           .database()
           .ref(`/users/${uid}/categories/${id}`)
           .set({
-            name, limit
-          })
+            name,
+            limit
+          });
 
         // dispatch('getCategories')
       } catch (error) {

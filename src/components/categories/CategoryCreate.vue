@@ -1,7 +1,6 @@
 <template>
   <div class="col s12 m6">
     <div>
-
       <form @submit.prevent="createCategory()">
         <div class="input-field">
           <input id="name" type="text" v-model="name" />
@@ -69,7 +68,7 @@ export default {
           limit: this.limit
         });
 
-        this.$store.commit('pushCategories', category)
+        this.$store.commit("pushCategories", category);
 
         this.limit = "";
         this.name = "";

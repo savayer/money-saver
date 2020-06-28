@@ -109,12 +109,12 @@ export default {
       };
 
       try {
-        this.loader = true
+        this.loader = true;
         await this.$store.dispatch("login", formData);
         this.$router.push("/");
-        this.loader = false
+        this.loader = false;
       } catch (e) {
-        this.loader = false
+        this.loader = false;
       }
     }
   }
