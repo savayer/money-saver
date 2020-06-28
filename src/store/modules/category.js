@@ -49,6 +49,24 @@ export default {
         commit("setError", error);
         throw error;
       }
+    },
+
+    async setCategory ({ commit }, { id, name, limit }) {
+      try {
+        const uid = firebase.auth().currentUser.uid;
+
+        await firebase
+          .database()
+          .ref(`/users/${uid}/categories/${id}`)
+          .set({
+            name, limit
+          })
+
+        // dispatch('getCategories')
+      } catch (error) {
+        commit("setError", error);
+        throw error;
+      }
     }
   }
 };

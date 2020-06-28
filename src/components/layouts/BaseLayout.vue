@@ -20,12 +20,24 @@
 </template>
 
 <script>
+import keys from "@/components/helpers/keys";
+
 export default {
   name: "BaseLayout",
   data() {
     return {
       isOpen: true
     };
+  },
+  computed: {
+    error() {
+      return this.$store.getters.error;
+    }
+  },
+  watch: {
+    error(fbError) {
+      this.$notify(keys[fbError.code] || "Something went wrong", "error");
+    }
   }
 };
 </script>

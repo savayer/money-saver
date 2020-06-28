@@ -49,7 +49,8 @@ export default {
     return {
       name: '',
       limit: '',
-      category: null
+      category: null,
+      catId: null
     };
   },
   computed: {
@@ -59,19 +60,28 @@ export default {
   },
   methods: {
     selectCategory () {
+      this.catId = this.category.id
       this.name = this.category.name
       this.limit = this.category.limit
       setTimeout(() => {
         M.updateTextFields()
       }, 0);
     },
-    updateCategory () {
+
+    async updateCategory () {
       if (this.$v.$invalid) {
         this.$v.$touch();
         return;
       }
 
-
+      try {
+        await this.$store.dispatch('setCategory', {
+          id: this.catId,
+          name: this.name,
+          limit: this.limit
+        })
+        this.$notify('The category was updated')
+      } catch (e) { /**/ }
     }
   },
   validations: {
