@@ -91,7 +91,6 @@ export default {
         M.updateTextFields();
       }, 0);
     },
-
     async updateCategory() {
       if (this.$v.$invalid) {
         this.$v.$touch();

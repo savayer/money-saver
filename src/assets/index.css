@@ -238,3 +238,21 @@ body {
   margin: 0;
   bottom: 0;
 }
+
+.cat_list {
+  font-size: 18px;
+}
+
+.form-group {
+  margin-bottom: 2rem;
+}
+
+.form-group__title {
+  font-size: 18px;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+.form-group__content {
+  margin-left: -1rem;
+}

@@ -31,6 +31,12 @@
             </li>
             <li class="divider" tabindex="-1"></li>
             <li>
+              <router-link to="/settings" class="black-text">
+                <i class="material-icons">settings</i>Settings
+              </router-link>
+            </li>
+            <li class="divider" tabindex="-1"></li>
+            <li>
               <a href="#" class="black-text" @click="logout()">
                 <i class="material-icons">assignment_return</i>Log out
               </a>

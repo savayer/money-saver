@@ -60,10 +60,22 @@ const routes = [
     component: () => import("@/views/Categories")
   },
   {
+    path: "/categories2",
+    name: "CategoriesPopup",
+    meta: { layout: "base", guestAccess: false },
+    component: () => import("@/views/CategoriesPopup")
+  },
+  {
     path: "/profile",
     name: "Profile",
     meta: { layout: "base", guestAccess: false },
     component: () => import("@/views/Profile")
+  },
+  {
+    path: "/settings",
+    name: "Settings",
+    meta: { layout: "base", guestAccess: false },
+    component: () => import("@/views/Settings")
   }
 ];
 

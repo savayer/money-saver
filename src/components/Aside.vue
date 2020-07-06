@@ -22,17 +22,40 @@ export default {
       required: true
     }
   },
-  data() {
-    return {
-      links: [
-        { name: "Bill", url: "/", exact: true },
-        { name: "History", url: "/history" },
-        { name: "Planning", url: "/planning" },
-        { name: "New Record", url: "/new-record" },
-        { name: "Categories", url: "/categories" },
-        { name: "Reports", url: "/reports" }
-      ]
-    };
+  data: () => ({
+    links: [
+      { name: "Bill", url: "/", exact: true },
+      { name: "History", url: "/history" },
+      { name: "Planning", url: "/planning" },
+      { name: "New Record", url: "/new-record" },
+      { name: "Categories", url: "/categories" },
+      { name: "Reports", url: "/reports" }
+    ]
+  }),
+/*  computed: {
+    categoriesLink () {
+      return this.$store.getters.categoryView === 'tabs' ? '/categories' : '/categories2'
+    }
+  },
+  watch: {
+    categoriesLink (val) {
+      this.links.find(c => c.name === "Categories").url = val
+    }
+  },
+  mounted () {
+    this.links = [
+      { name: "Bill", url: "/", exact: true },
+      { name: "History", url: "/history" },
+      { name: "Planning", url: "/planning" },
+      { name: "New Record", url: "/new-record" },
+      { name: "Categories", url: this.categoriesLink },
+      { name: "Reports", url: "/reports" }
+    ];
+  } */
+  mounted () {
+    const categoriesLink = this.$store.getters.categoryView === 'tabs' ? '/categories' : '/categories2'
+
+    this.links.find(c => c.name === "Categories").url = categoriesLink
   }
 };
 </script>

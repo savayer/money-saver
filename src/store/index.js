@@ -3,6 +3,8 @@ import Vuex from "vuex";
 import profile from "./modules/profile";
 import auth from "./modules/auth";
 import category from "./modules/category";
+import settings from "./modules/settings";
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -21,6 +23,7 @@ export default new Vuex.Store({
   modules: {
     auth,
     profile,
-    category
+    category,
+    settings
   }
 });
